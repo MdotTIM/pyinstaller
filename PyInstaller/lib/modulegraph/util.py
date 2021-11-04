@@ -136,7 +136,10 @@ def iterate_instructions(code_object):
     Yields `dis.Instruction`. After each code-block (`co_code`), `None` is
     yielded to mark the end of the block and to interrupt the steam.
     """
-    yield from get_instructions(code_object)
+    try:
+        yield from get_instructions(code_object)
+    except:
+        pass
 
     yield None
 
